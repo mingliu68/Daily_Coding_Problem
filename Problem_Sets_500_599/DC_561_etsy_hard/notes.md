@@ -5,7 +5,7 @@ This problem was asked by Etsy.
 Given a sorted array, convert it into a height-balanced binary search tree.
 
 
-* About height-balanced binary tree:
+##### About height-balanced binary tree:
 
     An empty tree is height-balanced. A non-empty binary tree T is balanced if:
     1) Left subtree of T is balanced
@@ -62,10 +62,10 @@ new binary tree is [5,2,0,1,3,4,8,6,7,9]
     ↓↓↓   psudo code   ↓↓↓
     ----------------------
 
-    ```javascript
+    ```
     sorted = [2,3,4,5,6,7,8]
 
-    function array_to_binary(array) {
+    function array_to_binary_arr(array) {
 
         if(array.length <= 2) {
             return array
@@ -83,30 +83,37 @@ new binary tree is [5,2,0,1,3,4,8,6,7,9]
 
     Node class has left, right and the value/data properties
 
-    Node  = {
-        left : someNode
-        right = 
-    }
-
-    pushing the center element of the array to the newly created binary tree array, using recursion to continue pushing the center element from left and right tree.  
+    1.  function select the center element of the array, creating root node with center element
+    2.  function recursion to eventually complete both node.left and node.right trees
 
     ↓↓↓   psudo code   ↓↓↓
     ----------------------
 
-    ```javascript
+    ```
     sorted = [2,3,4,5,6,7,8]
 
     function array_to_binary(array) {
-
-        if(array.length <= 2) {
-            return array
+        
+        if (array.length == 0) {   
+            return null
         }
-
-        center_index = Math.floor(array.length / 2)
-        left_child_tree = array.slice(0, center_index)
-        right_child_tree = array.slice(center_index + 1)
-
-        return [array[center_index], ...array_to_binary(left_child_tree), ...array_to_binary(right_child_tree)]
+        if (array.length = 1) {
+            let node = new Node(array[0])
+            return node
+        }
+        else {
+            let center_index = Math.floor(array.length / 2)
+            let left_tree = array.slice(0, center_index)
+            let right_tree = array.slice(center_index + 1)
+            let node = new Node(array[center_index])
+            if (left_tree.length > 0) {
+                node.left = array_to_binary(left_tree)
+            }
+            if (right_tree.length > 0) {
+                node.right = array_to_binary(right_tree)
+            }
+            return node
+        }
         
     }
     ```
