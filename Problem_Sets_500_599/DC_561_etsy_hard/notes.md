@@ -28,22 +28,22 @@ new binary tree [5,3,2,4,7,6,8]
 example array [0,1,2,3,4,5,6,7,8,9] 
 new binary tree [5,2,1,0,4,3,8,6,7,9]  
 
-       5       * L = [0,1,2,3,4]  R = [6,7,8,9]
+       5       L = [0,1,2,3,4]  R = [6,7,8,9]
      /   \
-    2     8    * L[0,1] R[3,4] / L[6,7] R[9]
+    2     8    L[0,1] R[3,4] / L[6,7] R[9]
    / \   / \
-  1  4   6  9  * L[0]/L[3]/R[7]
+  1  4   6  9  L[0]/L[3]/R[7]
  /   /    \
 0   3      7
 
 if returning array when array length <= 2
 new binary tree is [5,2,0,1,3,4,8,6,7,9]
 
-       5       * L = [0,1,2,3,4]  R = [6,7,8,9]
+       5       L = [0,1,2,3,4]  R = [6,7,8,9]
      /   \
-    2     8    * L[0,1] R[3,4] / L[6,7] R[9]
+    2     8    L[0,1] R[3,4] / L[6,7] R[9]
    / \   / \
-  0  3   6  9  * push remaining arrays when length <= 2
+  0  3   6  9  push remaining arrays when length <= 2
    \  \   \
     1  4   7
 
@@ -57,7 +57,7 @@ new binary tree is [5,2,0,1,3,4,8,6,7,9]
     ↓↓↓   psudo code   ↓↓↓
     ----------------------
 
-
+    ```javascript
     sorted = [2,3,4,5,6,7,8]
 
     function array_to_binary(array) {
@@ -72,6 +72,7 @@ new binary tree is [5,2,0,1,3,4,8,6,7,9]
 
         return [array[center_index], ...array_to_binary(left_child_tree), ...array_to_binary(right_child_tree)]
     }
+    ```
 
 2. same concept as above, but using a Node class instead of an array:
 
@@ -87,7 +88,7 @@ new binary tree is [5,2,0,1,3,4,8,6,7,9]
     ↓↓↓   psudo code   ↓↓↓
     ----------------------
 
-
+    ```javascript
     sorted = [2,3,4,5,6,7,8]
 
     function array_to_binary(array) {
@@ -103,5 +104,6 @@ new binary tree is [5,2,0,1,3,4,8,6,7,9]
         return [array[center_index], ...array_to_binary(left_child_tree), ...array_to_binary(right_child_tree)]
         
     }
+    ```
 
 
