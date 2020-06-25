@@ -4,17 +4,23 @@ This problem was asked by Etsy.
 
 Given a sorted array, convert it into a height-balanced binary search tree.
 
+=====================================================================
 
-##### About height-balanced binary tree:
+#### Height-balanced binary tree:
 
     An empty tree is height-balanced. A non-empty binary tree T is balanced if:
     1) Left subtree of T is balanced
     2) Right subtree of T is balanced
     3) The difference between heights of left subtree and right subtree is not more than 1. 
 
-=====================================================================
 
-height-balanced binary have same height on both sides (same level of children), balanced on every level, with left lower than the root node and right greater than roote node.  
+###### My thought process:
+
+    height-balanced binary have same height on both sides (same level of children), balanced on every level, with maximum difference of one level. Left tree node values less than the root node value and right tree node values greater than root node.  
+
+    By selecting the node at the center at each repetition, we are guaranteed to have nodes left of the center node with value lower than the center node value, and nodes right of the center node with value higher than the center node value. Since we are halving the array each time, we are also guaranteed to have the number of nodes on each side with the max difference of one node.  Based on the above information, by selecting the center node at each repetition, we will continue to have a balanced tree and all its sub-trees, with the maximum height difference of 1 
+
+
 
 example [2,3,4,5,6,7,8] 
 new binary tree [5,3,2,4,7,6,8]
