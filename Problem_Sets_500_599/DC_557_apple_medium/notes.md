@@ -23,3 +23,16 @@ For example, given N = 6 and X = 12, you should return 4, since the multiplicati
 And there are 4 12's in the table.
 
 =====================================================================
+
+
+### My thought process:
+
+1. 
+
+2. 
+
+    ↓↓↓   psudo code   ↓↓↓
+    ----------------------
+    ```
+    
+    ```
