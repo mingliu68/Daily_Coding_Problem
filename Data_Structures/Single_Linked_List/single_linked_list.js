@@ -5,6 +5,7 @@ class Node {
     }
     remove() {
         this.next = null
+        return this
     }
 }
 
@@ -18,7 +19,7 @@ class List {
     // return list.max (length)
     // parameter can be either data or node
     pushFront(data_node) {
-        let new_node = data_node instanceof Node ? input : new Node(data_node)
+        let new_node = data_node instanceof Node ? data_node : new Node(data_node)
         if (this.isEmpty()) {
             this.head = new_node
         }
@@ -76,7 +77,7 @@ class List {
                 this.head = null
             }
             else {
-                let new_end_node = getSecondLastNode()
+                let new_end_node = this.getSecondToLastNode()
                 removed = new_end_node.next
                 new_end_node.next = null
             }
@@ -125,8 +126,8 @@ class List {
             this.max += 1
             return this.max
         }
-        let prev_node = findPrevNode(node)
-        if (!prev_node) {
+        let prev_node = this.findPrevNode(node)
+        if (prev_node) {
             new_node.next = node
             prev_node.next = new_node
             this.max += 1
