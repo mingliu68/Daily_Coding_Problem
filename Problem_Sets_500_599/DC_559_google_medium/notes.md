@@ -10,15 +10,22 @@ Given k sorted singly linked lists, write a function to merge all the lists into
 
 ### My thought process:
 
-1. Creating a new singly linked list.  
-2. Keeping all lists in an array / list.  Starting with each list's head node, comparing all head nodes's data and pushback the head node with the smallest number to the new list 
-3. Update the list where the newly pushed head node was from, point the list's head node to head.next. (node.remove())
-4. Update the newly pushed node's next node 
-5. Check the same list above and make sure it's not an empty list (head is not null).  If it's an empty list, pop the list out of the array
-6. Keep on doing this until there is only one list left in the array
-7. pushback the remaining array
+1. function with an array of k singly linked lists as argument
+    function merge_lists(list_array)
+1. edge cases
+    1. if list_array length is zero, return null
+    1. if list_array length is 1, return list_array[0]
+1. Create a new singly linked list as merged_list  
+1. Create a new array containing all heads as heads
+1. while heads.length > 1 do the following
+1. Comparing list head node data, keep track of the one with the lowest value. <= creating a helper function to get the node with lowest data/value
+1. pushBack the smallest node to the new merged_list
+1. update heads array, smallest node is changed to smallest node.next
+1. is the updated node null? if it is, pop it out of the heads array
+1. once it's out of the while loop, backPush the remaining node in heads array to the new merged_list
+1. return merged_list
 
-1. 
+
 
     ↓↓↓   psudo code   ↓↓↓
     ----------------------
