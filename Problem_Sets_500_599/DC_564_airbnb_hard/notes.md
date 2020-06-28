@@ -12,17 +12,17 @@ Follow-up: Can you do this in O(N) time and constant space?
 
 ### My thought process:
 
-[ a ] will always return a
-[ a, b ] will always return max( a,b )
-[ a, b, c ] will return max( a, b, c, a+c)
-    [ a ] and [ c ] if c is non-negative or just [ a ] if c is negative
-    [ b ] only
-    [ c ] and [ a ] if a is non-negative or just [ c ] if a is negative
-[ a, b, c, d] will return max( **a**, **b**, **c**, **d**, **a + max( c,d )**, **b + d**, **c + a**, **d + max( a, b )**)
-    [ a ] and highest of [ c, d ]
-    [ b ] and [ d ] if d is non-negative or just [ b ] if d is negative
-    [ c ] and [ a ] if a is non-negative or just [ c ] if a is negative
-    [ d ] and highest of [ a, b ]
+* [ a ] will always return a
+* [ a, b ] will always return max( a,b )
+* [ a, b, c ] will return max( a, b, c, a+c)
+    * [ a ] and [ c ] if c is non-negative or just [ a ] if c is negative
+    * [ b ] only
+    * [ c ] and [ a ] if a is non-negative or just [ c ] if a is negative
+* [ a, b, c, d] will return max( **a**, **b**, **c**, **d**, **a + max( c,d )**, **b + d**, **c + a**, **d + max( a, b )**)
+    * [ a ] and highest of [ c, d ]
+    * [ b ] and [ d ] if d is non-negative or just [ b ] if d is negative
+    * [ c ] and [ a ] if a is non-negative or just [ c ] if a is negative
+    * [ d ] and highest of [ a, b ]
 
 Negative numbers automatically skipped, they are "free buffer"
 
