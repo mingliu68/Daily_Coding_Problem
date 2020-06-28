@@ -30,14 +30,34 @@ Given k sorted singly linked lists, write a function to merge all the lists into
     ↓↓↓   psudo code   ↓↓↓
     ----------------------
     ```
-  
+    function merge_lists(list_array) {
+        if(list_array.length == 0) return null
+        if(list_array.length == 1) return list_array[0]
+        let merge_list = new List()
+        let heads = []
+        for(let i = 0; i < list_array.length; i++) {
+            heads.push(list_array[i].head)
+        }
+
+        while (heads.length > 1) {
+            let small_node = smallest_node(heads)
+
+            heads = heads.filter( head => head != small_node ) 
+            if (small_node.next != null) {
+                heads.push(small_node.next)
+            }
+            merge_list.pushBack(small_node)  
+        }
+        return merge_list
+    }
+
+    function smallest_node(nodes) {
+        let min = nodes[0]
+        for(let i = 1; i < nodes.length; i++) {
+            if(nodes[i].data < min.data) {
+                min = nodes[i]
+            }
+        }
+        return min
+    }
     ```
-
-2. 
-
-    ↓↓↓   psudo code   ↓↓↓
-    ----------------------
-    ```
-
-    ```
-
