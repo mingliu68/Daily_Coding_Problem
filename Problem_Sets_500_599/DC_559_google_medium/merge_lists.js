@@ -45,6 +45,13 @@ function get_min_node(nodes) {
     }
     return min;
 }
+
+
+
+
+
+
+
 // ↓↓↓   basic testing   ↓↓↓
 array1 = [1, 3, 4, 5, 7, 9, 11];
 array2 = [2, 2, 5, 6, 8, 9, 10, 12, 13, 14];
