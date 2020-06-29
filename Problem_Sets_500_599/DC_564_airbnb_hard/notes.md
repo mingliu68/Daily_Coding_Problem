@@ -24,25 +24,28 @@ Follow-up: Can you do this in O(N) time and constant space?
     * [ c ] and [ a ] if a is non-negative or just [ c ] if a is negative
     * [ d ] and highest of [ a, b ]
 
-Negative numbers automatically skipped, they are "free buffer"
+Negative numbers and zeros are automatically skipped, they are "free buffer"
+
+
+### Brute Force
 
 Start to see a pattern emerging.  start with each number, then sum up with the results from their non-adjacent lists recursively
-Also, maybe keep track of lists already seen before and its result
-Recursive dynamic programming
 
 Example:
 
 **[2, 4, 7, 8, 5, 3, -5, 4, 2, 6, -3, 7]**
 
 first break down into non-neg lists
-[ 2, 4, 7, 8, 5, 3 ]
-[ 4, 2, 6 ]
-[ 7 ]
+* [ 2, 4, 7, 8, 5, 3 ]
+* [ 4, 2, 6 ]
+* [ 7 ]
 
 loop thru every single element of every list
 
 result from [2, 4, 7, 8, 5, 3] + result from [4, 2, 6] + result from [7]
+```
 15 + 10 + 7 = 32
+```
 
 ```
 #####[2, 4, 7, 8, 5, 3]
@@ -91,14 +94,79 @@ result from [4] + [6]
 **result = 7**
 ```
 
+keep track of the best result from each non-zero / non-negative list
+
+### Can this be done in O(n)?  YES
+
+Dynamic Programming - keeping cache of best results from all the sub arrays 
+
+Example: 
+Let's use the first array from above
+
+**[ 2, 4, 7, 8, 5, 3 ]**
+
+* From each element, we have the option to add it or skip it.  
+* We will run the function recursively based on two choices (using the current element or NOT using the current element)
+* Recursive function will then run on the sub arrays based on if the current element is been used.  
+* If it is, then sub array will start with the element after the next element (if 2 is used, then sub array will be [7,8,5,3])
+* if it's not, then the sub array will start with the next element (if 2 is NOT used, then the sub array will be [4,7,8,5,3]).  
+* We arrange recursive functions in a way where the one with the longest sub array is placed on top, so we can store the most results in our cache.  
+
+
+↓↓↓   psudo code   ↓↓↓
+----------------------
+
+``` |
+func ([2,4,7,8,5,3], cache)
+    key = JSON.stringify([2,4,7,8,5,3])
+    if(!cache[key]) {
+        cache[key] = max(0 + **func([4,7,8,5,3], cache)**, 2 + func([7,8,5,3], cache))
+    }
+    return cache[key]
+                            
+                            ↓↓↓
+            func([4,7,8,5,3], cache) 
+                key = JSON.stringify([4,7,8,5,3])
+                if(!cache[key])
+                    cache[key] = max(0 + **func([7,8,5,3])**, cache), 4 + func([8,5,3]), cache)
+                return cache[key]
+
+                                      ↓↓↓
+                        function([7,8,5,3], cache)
+                            key = JSON.stringify([7,8,5,3])
+                            if(!cache[key])
+                                cache[key] = max(0 + **func([8,5,3])**, cache), 7 + func([5,3]), cache)
+                            return cache[key]
+
+                            * [8,5,3] and [5,3] are base cases, so return 11 (8 and 3) and 5 (5)respectively
+                            * [7,8,5,3] will then return the maximum value between (0 + 11) and (7 + 5), which is 12
+                
+                * we can now retrieve values from our cache / memoization table for both [7,8,5,3] and [8,5,3], they are 12 and 11 respectively
+                * [4,7,8,5,3] will then return the maximum value between (0 + 12) and (4 + 11), which is 15
+
+    * Continue to retrieve values from our cache / memoization table for both [4,7,8,5,3] and [7,8,5,3] sub arrays, and they are 15 and 12 respectively
+    * [2,4,7,8,5,3] will then return the maximum value between (0 + 15) and (2 + 12), which is 15
+
+cache / memoization table
+Key | Value
+--- | -----
+'[5,3]' | 5
+'[8,5,3]' | 11
+'[7,8,5,3]' | 12
+'[4,7,8,5,3]' | 15
+'[2,4,7,8,5,3]' | 15
+
+```
+
+
+
+
 
 
 1. 
 
 2. 
 
-    ↓↓↓   psudo code   ↓↓↓
-    ----------------------
     ```
     
     ```
