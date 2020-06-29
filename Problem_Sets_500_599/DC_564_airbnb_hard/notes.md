@@ -146,7 +146,7 @@ func ([2,4,7,8,5,3], cache)
 
     * Continue to retrieve values from our cache / memoization table for both [4,7,8,5,3] and [7,8,5,3] sub arrays, and they are 15 and 12 respectively
     * [2,4,7,8,5,3] will then return the maximum value between (0 + 15) and (2 + 12), which is 15
-
+```
 cache / memoization table
 Key | Value
 --- | -----
@@ -156,17 +156,3 @@ Key | Value
 '[4,7,8,5,3]' | 15
 '[2,4,7,8,5,3]' | 15
 
-```
-
-
-
-
-
-
-1. 
-
-2. 
-
-    ```
-    
-    ```
