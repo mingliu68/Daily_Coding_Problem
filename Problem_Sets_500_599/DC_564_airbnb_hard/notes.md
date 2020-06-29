@@ -96,7 +96,7 @@ result from [4] + [6]
 
 keep track of the best result from each non-zero / non-negative list
 
-### Can this be done in O(n)?  YES
+# Can this be done in O(n)?  YES
 
 Dynamic Programming - keeping cache of best results from all the sub arrays 
 
@@ -120,7 +120,7 @@ Let's use the first array from above
 func ([2,4,7,8,5,3], cache)
     key = JSON.stringify([2,4,7,8,5,3])
     if(!cache[key]) {
-        cache[key] = max(0 + **func([4,7,8,5,3], cache)**, 2 + func([7,8,5,3], cache))
+        cache[key] = max(0 + func([4,7,8,5,3], cache), 2 + func([7,8,5,3], cache))
     }
     return cache[key]
                             
@@ -128,14 +128,14 @@ func ([2,4,7,8,5,3], cache)
             func([4,7,8,5,3], cache) 
                 key = JSON.stringify([4,7,8,5,3])
                 if(!cache[key])
-                    cache[key] = max(0 + **func([7,8,5,3])**, cache), 4 + func([8,5,3]), cache)
+                    cache[key] = max(0 + func([7,8,5,3]), cache), 4 + func([8,5,3]), cache)
                 return cache[key]
 
                                       ↓↓↓
                         function([7,8,5,3], cache)
                             key = JSON.stringify([7,8,5,3])
                             if(!cache[key])
-                                cache[key] = max(0 + **func([8,5,3])**, cache), 7 + func([5,3]), cache)
+                                cache[key] = max(0 + func([8,5,3]), cache), 7 + func([5,3]), cache)
                             return cache[key]
 
                             * [8,5,3] and [5,3] are base cases, so return 11 (8 and 3) and 5 (5)respectively
@@ -150,9 +150,9 @@ func ([2,4,7,8,5,3], cache)
 cache / memoization table
 Key | Value
 --- | -----
-'[5,3]' | 5
-'[8,5,3]' | 11
-'[7,8,5,3]' | 12
-'[4,7,8,5,3]' | 15
-'[2,4,7,8,5,3]' | 15
+[5,3] | 5
+[8,5,3] | 11
+[7,8,5,3] | 12
+[4,7,8,5,3] | 15
+[2,4,7,8,5,3] | 15
 
