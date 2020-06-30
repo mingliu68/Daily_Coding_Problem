@@ -113,7 +113,7 @@ Let's use the first array from above
 * We arrange recursive functions in a way where the one with the longest sub array is placed on top, so we can store the most results in our cache.  
 
 
-↓↓↓   psudo code   ↓↓↓
+↓↓↓   psudo code for positive sub array  ↓↓↓
 ----------------------
 
 ``` |
@@ -141,10 +141,12 @@ func ([2,4,7,8,5,3], cache)
                             * [8,5,3] and [5,3] are base cases, so return 11 (8 and 3) and 5 (5)respectively
                             * [7,8,5,3] will then return the maximum value between (0 + 11) and (7 + 5), which is 12
                 
-                * we can now retrieve values from our cache / memoization table for both [7,8,5,3] and [8,5,3], they are 12 and 11 respectively
+                * We can now retrieve values from our cache / memoization table to solve for [4,7,8,5,3]
+                * Values for both [7,8,5,3] and [8,5,3] are 12 and 11 respectively
                 * [4,7,8,5,3] will then return the maximum value between (0 + 12) and (4 + 11), which is 15
 
-    * Continue to retrieve values from our cache / memoization table for both [4,7,8,5,3] and [7,8,5,3] sub arrays, and they are 15 and 12 respectively
+    * Continue to retrieve values from our cache / memoization table to solve for [2,4,7,8,5,3]
+    * Values for both [4,7,8,5,3] and [7,8,5,3] sub arrays are 15 and 12 respectively
     * [2,4,7,8,5,3] will then return the maximum value between (0 + 15) and (2 + 12), which is 15
 ```
 cache / memoization table
@@ -156,3 +158,9 @@ Key | Value
 [4,7,8,5,3] | 15
 [2,4,7,8,5,3] | 15
 
+
+####Time Complexity
+* O(n) : single pass thru the original array to split it into multiple arrays with only positive elements
+* O(1) x n => O(n) : single pass thru sub array to find the maximum sum for that sub array x n sub arrays (each operation will have 2 operations but only one require true operation while the other one is a simple lookup in the cache)
+
+O(n) + O(n) => the time complexity is O(n) 
