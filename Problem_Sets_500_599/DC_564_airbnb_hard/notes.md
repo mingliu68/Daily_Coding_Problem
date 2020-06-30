@@ -48,7 +48,7 @@ result from [2, 4, 7, 8, 5, 3] + result from [4, 2, 6] + result from [7]
 ```
 
 ```
-#####[2, 4, 7, 8, 5, 3]
+##### [2, 4, 7, 8, 5, 3]
 [2] + result from [7, 8, 5, 3] 
 [2] + [8] + result from [3] 
 [2] + [8] + [3] ===> 13
@@ -75,7 +75,7 @@ result from [2, 4, 7, 8] + [3]
 ```
 
 ```
-#####[4, 2, 6]
+##### [4, 2, 6]
 [4] + result from [6]
 [4] + [6] ===> 10
 
@@ -88,7 +88,7 @@ result from [4] + [6]
 ```
 
 ```
-#####[7]
+##### [7]
 [7] ===> 7
 
 **result = 7**
@@ -159,7 +159,7 @@ Key | Value
 [2,4,7,8,5,3] | 15
 
 
-####Time Complexity
+#### Time Complexity
 * O(n) : single pass thru the original array to split it into multiple arrays with only positive elements
 * O(1) x n => O(n) : single pass thru sub array to find the maximum sum for that sub array x n sub arrays (each operation will have 2 operations but only one require true operation while the other one is a simple lookup in the cache)
 

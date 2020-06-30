@@ -8,39 +8,36 @@
 
 function get_largest_sum(orig_array) {
     let [index, arrays, max, cache] = [0, [], 0, {}]
-    while(orig_array.length > 0 && index < orig_array.length) {
+
+    while (orig_array.length > 0 && index < orig_array.length) {
         if (orig_array[index] < 1) {
-            if (index == 0) {
-                orig_array.shift()
-            } 
+            if (index == 0) orig_array.shift()
             else {
                 arrays.push(orig_array.splice(0, index))
                 orig_array.shift()
                 index = 0
             }
         }
-        else {
-            index += 1
-        }
+        else index += 1
     }
-    if (orig_array.length > 0) {
-        arrays.push(orig_array)
-    }
+
+    if (orig_array.length > 0) arrays.push(orig_array)
+
     for (let array of arrays) {
         let key = JSON.stringify(array)
         max += cache[key] ? cache[key] : non_adjacent_largest_sum(array, cache)
     }
+
     return max
 }
 
 function non_adjacent_largest_sum(array, cache = {}) {
-    if(array.length == 0) {
-        return 0
-    }
+    if(array.length == 0) return 0
+
     let key = JSON.stringify(array)
-    if (cache[key]) {
-        return cache[key]
-    }
+
+    if (cache[key]) return cache[key]
+
     else {
         if (array.length == 3) {
             cache[key] = Math.max(array[0] + array[2], array[1])
@@ -52,6 +49,7 @@ function non_adjacent_largest_sum(array, cache = {}) {
             cache[key] = Math.max(non_adjacent_largest_sum(array.slice(1), cache), array[0] + non_adjacent_largest_sum(array.slice(2), cache))
         }    
     }
+
     return cache[key]
 }
 
