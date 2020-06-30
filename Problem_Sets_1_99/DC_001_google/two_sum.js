@@ -10,16 +10,16 @@ function two_number_sum(array, k) {
     let cache = {}
     for (let num of array) {
         if (cache[ k - num ]) {
-            console.log(`Matches found: ${num} and ${k-num}`)
+            //console.log(`Matches found: ${num} and ${k-num}`)
             return true
         }
         else {
             if (cache [ num ]) {
                 cache [ num ] = cache [ num ] + 1
-                console.log(`${num} : ${cache[num]}`)
+                //console.log(`${num} : ${cache[num]}`)
             } else {
                 cache [ num ] = 1
-                console.log(`${num} : ${cache[num]}`)
+                //console.log(`${num} : ${cache[num]}`)
             }
         }
     }
