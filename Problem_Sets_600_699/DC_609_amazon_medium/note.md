@@ -51,19 +51,22 @@ In the above diagram,
 
 ### My thought process:
 
-1.      has right tree node?
-            -> does right tree node has a left tree node? 
-                -> yes, keep on traverse down to the last left tree node.  the last left tree node is the inorder successor
-                -> no, right tree node is the inorder successor
+    has right tree node?
+        -> does right tree node has a left tree node? 
+            -> yes, keep on traverse down to the last left tree node.  the last left tree node is the inorder successor
+            -> no, right tree node is the inorder successor
 
-        does not have right tree node?
-            -> is it the end of the tree (last node) or the head node?
-                -> yes, the inorder successor is null
-                -> no, the parent node is the inorder success if the parent node value is greater than the input node value.  Else, traverse back until the node value is greater than the input node value.  
-       
+    does not have right tree node?
+        -> is it the end of the tree (last node) or the head node?
+            -> yes, the inorder successor is null
+            -> no, the parent node is the inorder success if the parent node value is greater than the input node value.  
+            Else, traverse back until the node value is greater than the input node value.  
+    
 
+    edge cases:
+        head node with no right tree node
+        last node (max value) of the tree
 
-2.  edge cases:
     
 
 
