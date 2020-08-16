@@ -9,7 +9,7 @@ Daily Question ID | Asked By | Difficulty | Notes | Solutions
 606 | |  | [] |
 607 | |  | [] |
 608 | |  | [] |
-609 | Amazon | Medium | [] |
+609 | Amazon | Medium | [x] |
 610 | |  | [] |
 611 | |  | [] |
 612 | |  | [] |
