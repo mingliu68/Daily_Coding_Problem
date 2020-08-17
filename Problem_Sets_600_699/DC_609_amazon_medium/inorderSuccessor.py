@@ -2,8 +2,6 @@ from binary_tree import Node, Tree
 
 
 def get_inorder_successor(node):
-    print(node)
-    # print(f'node is {node.data}, parent is {node.parent.data}')
     # if node is headnode and no right tree node
     if node.parent is None and node.right is None:
         return None
@@ -21,13 +19,10 @@ def get_inorder_successor(node):
     # until we find a node with data/value greater than the input node data / value
     else:
         parent = node.parent
-        print(f'parent is {parent.data}')
         while parent is not None:
             if parent.data < node.data:
                 parent = parent.parent
-                print(f'up a level, parent is now {parent.data}')
             else:
-                print(f'breaking. parent is now {parent.data}')
                 break
         return parent
 
@@ -81,11 +76,14 @@ def printTree(headnode, tree=[]):
 
 
 def test():
-    # print(get_inorder_successor(tree1_head.right.right))
-    # not returning the right node, return None instead
+    # should return None
+    print(get_inorder_successor(tree1_head.right.right))
+    # should return node with data 8
     print(get_inorder_successor(tree1_head.left.left.right))
-    # print(get_inorder_successor(tree2_head.right.left))
-    # print(printTree(tree1_head))
+    # should return node with data 23
+    print(get_inorder_successor(tree2_head.right.left))
+    # should return [20, 8, 4, 5, 12, 10, 14, 13, 22, 24, 23]
+    print(printTree(tree1_head))
 
 
 test()
