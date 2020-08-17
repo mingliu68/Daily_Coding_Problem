@@ -7,7 +7,7 @@
 const { Node, Tree } = require("../../Data_Structures/Binary_Tree/binary_tree.js")
 Node.prototype.parent = null
 
-function getInorderSuccessor(node) {
+function get_inorder_successor(node) {
     // if head node and no right child
     if (!node.parent && !node.right) {
         return null
@@ -27,13 +27,14 @@ function getInorderSuccessor(node) {
     else {
         let parent = node.parent
         while (parent) {
-            if (parent.data > node.data) {
-                return parent
-            } else {
+            if (parent.data < node.data) {
                 parent = parent.parent
             }
+            else {
+                break;
+            }
         }
-        return null
+        return parent
     }
 }
 
@@ -47,7 +48,8 @@ function printTree(headnode, tree = []) {
     return tree
 }
 
-let treeArray1 = [20, 8, 4, 5, 12, 10, 14, 13, 22, 23]
+let treeArray1 = [20, 8, 4, 5, 12, 10, 14, 13, 22, 24, 23]
+
 let treeArray2 = [10, 5, 30, 22, 26, 24, 23, 27, 35]
 
 function treeCreator(arr, parent = null) {
@@ -83,7 +85,7 @@ function treeCreator(arr, parent = null) {
 let tree1 = new Tree(treeCreator(treeArray1))
 let tree2 = new Tree(treeCreator(treeArray2))
 function test() {
-    console.log(getInorderSuccessor(tree1.head.left.left.right));
-    console.log(getInorderSuccessor(tree2.head.right.left));
+    console.log(get_inorder_successor(tree1.head.left.left.right));
+    console.log(get_inorder_successor(tree1.head.right.right));
 }
 test();

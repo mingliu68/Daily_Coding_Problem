@@ -13,7 +13,7 @@ For example, the inorder successor of 22 is 30.
       22    35
 
     [10, 5, 30, 22, 35]
-    
+
 You can assume each node has a **parent pointer**.
 
 =====================================================================
@@ -54,7 +54,7 @@ In Binary Search Tree, Inorder Successor of an input node can also be defined as
         inorder successor of 8 is 10, 
         inorder successor of 10 is 12, 
         inorder successor of 12 is 13, 
-        inorder successor of 23 is null,
+        inorder successor of 23 is 24,
         inorder succeesor of 22 is 23,
         inorder successor of 5 is 8,
         inorder successor of 14 is 20.
@@ -63,13 +63,13 @@ In Binary Search Tree, Inorder Successor of an input node can also be defined as
              /      \
             8         22
          /     \        \
-        4       12       23     
-         \     /   \ 
-          5   10   14
+        4       12       24    
+         \     /   \    /
+          5   10   14  23
                    /
                   13
 
-    [20, 8, 4, 5, 12, 10, 14, 13, 22, 23]
+    [20, 8, 4, 5, 12, 10, 14, 13, 22, 24, 23]
 
 ### My thought process:
 
