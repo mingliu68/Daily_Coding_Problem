@@ -24,6 +24,8 @@ function get_inorder_successor(node) {
             return left_child
         }
     }
+    // if there is no right child (tree), 
+    // traverse back upwards until the node data is greater than the input node data
     else {
         let parent = node.parent
         while (parent) {
@@ -85,7 +87,9 @@ function treeCreator(arr, parent = null) {
 let tree1 = new Tree(treeCreator(treeArray1))
 let tree2 = new Tree(treeCreator(treeArray2))
 function test() {
+    // should return node with data 8
     console.log(get_inorder_successor(tree1.head.left.left.right));
+    // should return null
     console.log(get_inorder_successor(tree1.head.right.right));
 }
 test();
